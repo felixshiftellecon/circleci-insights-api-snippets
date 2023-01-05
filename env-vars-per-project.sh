@@ -12,6 +12,5 @@ ALL_PROJECTS=$(curl -s --request GET --url "https://circleci.com/api/v2/insights
 
 for i in $(echo ${ALL_PROJECTS}) ; do
   echo "$i"
-  echo test
   curl -s --request GET --url "https://circleci.com/api/v2/project/${VCS}/${ORG}/${i}/envvar?circle-token=${CIRCLE_TOKEN}" | jq .items[]
 done
