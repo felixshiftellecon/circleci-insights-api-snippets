@@ -11,6 +11,5 @@ ORG=""
 ALL_PROJECTS=$(curl -s --request GET --url "https://circleci.com/api/v2/insights/${VCS}/${ORG}/summary?circle-token=${CIRCLE_TOKEN}" | jq -r .all_projects[])
 
 for i in $(echo ${ALL_PROJECTS}) ; do
-  echo "$i"
   curl -s --request GET --url "https://circleci.com/api/v2/project/${VCS}/${ORG}/${i}/envvar?circle-token=${CIRCLE_TOKEN}" | jq .items[]
 done
